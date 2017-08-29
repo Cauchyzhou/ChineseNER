@@ -8,12 +8,12 @@ This repository contains a simple demo for chainese named entity recognition.
 - some data processing codes from [glample/tagger](https://github.com/glample/tagger)
 
 
-## Requirements
-原仓库
+## 原Requirements
 - python3
 - [Tensorflow=1.2.0](https://github.com/tensorflow/tensorflow)
 - [jieba=0.37](https://github.com/fxsjy/jieba)
-我的库
+
+## MyRequirements
 - python2.7
 - [Tensorflow=1.1.0](https://github.com/tensorflow/tensorflow)
 - [jieba=0.37](https://github.com/fxsjy/jieba)
