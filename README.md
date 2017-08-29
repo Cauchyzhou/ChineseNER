@@ -1,5 +1,6 @@
 ## Recurrent neural networks for Chinese named entity recognition in TensorFlow
 This repository contains a simple demo for chainese named entity recognition.
+这里修改了一些.py文件，使其适应于python2.7，及tensorflow1.1
 
 ## Contributer
 - [Jingyuan Zhang](https://github.com/zjy-ucas)
@@ -8,9 +9,14 @@ This repository contains a simple demo for chainese named entity recognition.
 
 
 ## Requirements
+原仓库
+- python3
 - [Tensorflow=1.2.0](https://github.com/tensorflow/tensorflow)
 - [jieba=0.37](https://github.com/fxsjy/jieba)
-
+我的库
+- python2.7
+- [Tensorflow=1.1.0](https://github.com/tensorflow/tensorflow)
+- [jieba=0.37](https://github.com/fxsjy/jieba)
 
 ## Model
 The model is a birectional LSTM neural network with a CRF layer. Sequence of chinese characters are projected into sequence of dense vectors, and concated with extra features as the inputs of recurrent layer, here we employ one hot vectors representing word boundary features for illustration. The recurrent layer is a bidirectional LSTM layer, outputs of forward and backword vectors are concated and projected to score of each tag. A CRF layer is used to overcome label-bias problem.
@@ -33,11 +39,21 @@ Word vectors are trained with gensim version of word2vec on Chinese WiKi corpus,
 ```shell
 $ python3 main.py --train=True --clean=True
 ```
-
+python2
+```shell
+$ python main.py --train=True --clean=True
+```
 ### Online evaluate:
 ```shell
 $ python3 main.py
 ```
+## 修改记录
+1.data_utils -> class BatchManager -> sort_and_pad ->第1行
+	        num_batch = int(math.ceil(len(data) /batch_size))  乘了1.0
+2.utils -> save_config 和 load_config -> open 去掉了encoding
+3.main -> train ->注释掉第2个make_path
+4.rnn_cell.py  我是把https://github.com/tensorflow/tensorflow/blob/r1.1/tensorflow/contrib/rnn/python/ops/rnn_cell.py
+               中对应的RNN模块替换原来的代码，对应版本的修改请见上面网站的左上方选择tensorflow版本
 
 ## Suggested readings:
 1. [Natural Language Processing (Almost) from Scratch](http://jmlr.org/papers/volume12/collobert11a/collobert11a.pdf).  
