@@ -48,11 +48,13 @@ $ python main.py --train=True --clean=True
 $ python3 main.py
 ```
 ## 修改记录
-1.data_utils -> class BatchManager -> sort_and_pad ->第1行
-	        num_batch = int(math.ceil(len(data) /batch_size))  乘了1.0
-2.utils -> save_config 和 load_config -> open 去掉了encoding
-3.main -> train ->注释掉第2个make_path
-4.rnn_cell.py  我是把https://github.com/tensorflow/tensorflow/blob/r1.1/tensorflow/contrib/rnn/python/ops/rnn_cell.py
+1. data_utils -> class BatchManager -> sort_and_pad ->第1行num_batch = int(math.ceil(len(data) /batch_size))  乘了1.0
+
+2. utils -> save_config 和 load_config -> open 去掉了encoding
+
+3. main -> train ->注释掉第2个make_path
+
+4. rnn_cell.py  我是把https://github.com/tensorflow/tensorflow/blob/r1.1/tensorflow/contrib/rnn/python/ops/rnn_cell.py
                中对应的RNN模块替换原来的代码，对应版本的修改请见上面网站的左上方选择tensorflow版本
 
 ## Suggested readings:
